@@ -123,7 +123,7 @@ Zelfstandige blokken die je los op een pagina zet.
 
 ### Foto-paneel (valprop)
 
-{% include valprop.html title="Kwartiermakers van publieke digitalisering" description="We werken bij je in de organisatie, met de mensen die het werk doen. Tot jullie het zelf kunnen." image="/assets/img/foto/Tiltshift-Aanpak-Innovatie-Interventie-Vastgelopen-digitaliserings-project.jpg" url="/begeleiding/" button="Meer over begeleiding" %}
+{% include valprop.html title="Kwartiermakers van publieke digitalisering" description="We begeleiden je in je organisatie, met de mensen die het werk doen. Tot jullie het zelf kunnen." image="/assets/img/foto/Tiltshift-Aanpak-Innovatie-Interventie-Vastgelopen-digitaliserings-project.jpg" url="/begeleiding/" button="Meer over begeleiding" %}
 
 Het kenmerkende blok van de site: foto, gekanteld rood vlak, witte tekst en een zwarte knop. Zonder `url` en `button` linkt de knop naar /contact/.
 
@@ -185,7 +185,7 @@ Genummerde stappen met alleen een titel en één korte regel (`kort:` per stap).
 
 ### Contactblok
 
-In dezelfde beeldtaal als de mensenrijen: portret met het gekantelde rode vlak, een rood label en een grote kop, de naam als zwarte strook half over de foto, en het telefoonnummer groot. Het portret en de naam horen bij wie het nummer opneemt (zie het [adresboek](/adresboek/)). Zonder `header` is de kop "Zullen we even bellen?".
+In dezelfde beeldtaal als de mensenrijen: portret met het gekantelde rode vlak, een rood label en een grote kop, de naam als zwarte strook half over de foto, en het telefoonnummer groot. Het portret en de naam horen bij wie het nummer opneemt (zie het [adresboek](/adresboek/)). Het e-mailadres is altijd het persoonlijke adres van die persoon, nooit info@ of administratie@: die staan alleen op [/contact/](/contact/) en in de footer. Zonder `header` is de kop "Even bellen?".
 
 {% include cta.html header="Wat kunnen we voor jouw organisatie betekenen?" persoon="johan" %}
 
@@ -195,7 +195,7 @@ De foto is het portret uit `_data/mensen.yml` (veld `portret`). Het veld `img` i
 
 ### Sectie
 
-Een losstaand blok op een pagina: label, kop, tekst en link, met een beeld ernaast. Met `knop=true` wordt de link een zwarte knop, voor de belangrijkste actie. Secties wisselen vanzelf af: de eerste heeft de tekst links en het beeld rechts, de volgende andersom. Je geeft dat niet zelf aan.
+Een losstaand blok op een pagina: label, kop, tekst en link, met een beeld ernaast. Met `knop=true` wordt de link een zwarte knop, voor de belangrijkste actie. De tekst kan uit meer alinea's bestaan: maak hem dan met `capture` en zet elke alinea op een eigen regel, zoals bij "In-house teams" op [/begeleiding/](/begeleiding/). Secties wisselen vanzelf af: de eerste heeft de tekst links en het beeld rechts, de volgende andersom. Je geeft dat niet zelf aan. Past een lang woord in de kop niet in de tekstkolom (zoals "uitvoeringsdomeinen"), zet er dan zelf een `&shy;` in: `uitvoerings&shy;domeinen`. De browser breekt het woord dan alleen daar af, en alleen als het nodig is.
 
 - **Vanaf 1280 pixels**: twee kolommen. De tekst staat op de inhoudskolom, het beeld loopt door tot de schermrand en het rode vlak steekt uit naar de schermrand. Tekst en beeld lijnen boven uit, met veel ruimte boven de sectie.
 - **Tussen 768 en 1280 pixels**: onder elkaar, het beeld schermbreed in 3:2.
@@ -227,8 +227,8 @@ Alinea's, lijsten en quotes in markdown.
 
 Met `breed=true` staat het beeld niet naast de tekst maar eronder, over de volle breedte. Het tekstblok verspringt dan links en rechts. Zo staan opdrachtgevers en resultaten op de home.
 
-<pre class="ds-code container-sm"><code>{% raw %}{% capture resultaten %}{% include projects-homepage.html zonder_kop=true %}{% endcapture %}
-{% include sectie.html breed=true label="Resultaten" kop="Uitgelichte resultaten" tekst="..." beeld=resultaten %}{% endraw %}</code></pre>
+<pre class="ds-code container-sm"><code>{% raw %}{% capture opdrachtgevers %}{% include klanten-uitgelicht.html %}{% include logos-relaties.html %}{% endcapture %}
+{% include sectie.html breed=true label="Opdrachtgevers" kop="Voor wie we werken" tekst="..." beeld=opdrachtgevers %}{% endraw %}</code></pre>
 
 ### Blokken
 
@@ -261,7 +261,7 @@ Een balk die onderin beeld vast blijft staan op de workshoppagina's: links de na
 
 ### Reeks
 
-Workshops die bij elkaar horen langs de looptijd van een opdracht, zoals de drie publieke-codeworkshops. Ze staan als blokken in leesvolgorde: stap 1 en 2 klein links, stap 3 groot rechts (`blokken--groot-laatst`), met een rood stapnummer en het moment boven de titel. Op een workshoppagina van de reeks staat bij de huidige stap "Je bent hier". Een workshop hoort bij een reeks met `reeks:`, `reeks_stap:` en `reeks_moment:` in de front matter. Op /workshops/ krijgt een reeks een eigen sectie.
+Workshops die bij elkaar horen langs de looptijd van een opdracht, zoals de drie publieke-codeworkshops. Ze staan als blokken in leesvolgorde: stap 1 en 2 klein links, stap 3 groot rechts (`blokken--groot-laatst`), met een rood stapnummer en het moment boven de titel. Op een workshoppagina van de reeks staat bij de huidige stap "Je bent hier". Een workshop hoort bij een reeks met `reeks:`, `reeks_stap:` en `reeks_moment:` in de front matter. Op /workshops/ krijgt een reeks een eigen sectie. Label, kop en tekst van de reeks staan in `_data/reeksen.yml`.
 
 {% include reeks.html reeks="publieke-code" %}
 
@@ -269,13 +269,13 @@ Workshops die bij elkaar horen langs de looptijd van een opdracht, zoals de drie
 
 ### Checklist
 
-Een lijst met lege vinkvakjes, voor wat er geregeld moet worden. Op een workshoppagina uit `checklist:` in de front matter, als tekstsectie "Wat we bij de start regelen".
+Een lijst met lege vinkvakjes, voor wat er geregeld moet worden. Op een workshoppagina uit `checklist:` in de front matter, als tekstsectie "Wat je bij de start regelt".
 
 <div class="container-sm"><ul class="checklist"><li>Maak een LICENSE aan in de repository (EUPL 1.2).</li><li>Maak een publiccode.yml aan.</li></ul></div>
 
 ### Terugbelformulier
 
-Twee velden: "E-mail of telefoon" (verplicht) en "Extra info" (optioneel). Zonder API opent het een vooraf ingevulde e-mail aan info@. Staat er een adres bij `endpoint` in `_data/terugbellen.yml`, dan stuurt het een POST met JSON naar de eigen mini-API (`contact`, `info`, `pagina`, `url`). Mislukt dat, dan valt het terug op e-mail. Een verborgen veld `website` vangt spambots af. Het formulier staat in het contactblok met `formulier=true`. Op de pagina [/boeken/](/boeken/) staat het met een keuzelijst van workshops (`kies=true`); met `?workshop=crazy-8s` in de URL is de juiste workshop al gekozen. De workshoppagina's linken daarheen met hun knop "Boek deze workshop". Naam, telefoon en e-mail staan dan onder de foto.
+Twee velden: "E-mail of telefoon" (verplicht) en "Extra info" (optioneel). Zonder API opent het een vooraf ingevulde e-mail aan het adres bij `mail` in `_data/terugbellen.yml` (joris.boeren@, die de workshops doet). Staat er een adres bij `endpoint` in `_data/terugbellen.yml`, dan stuurt het een POST met JSON naar de eigen mini-API (`contact`, `info`, `pagina`, `url`). Mislukt dat, dan valt het terug op e-mail. Een verborgen veld `website` vangt spambots af. Het formulier staat in het contactblok met `formulier=true`. Op de pagina [/boeken/](/boeken/) staat het met een keuzelijst van workshops (`kies=true`); met `?workshop=crazy-8s` in de URL is de juiste workshop al gekozen. Met `?workshop=weet-ik-nog-niet` staat "Weet ik nog niet" gekozen; zo linkt de knop "Neem contact op" op [/workshops/](/workshops/). De workshoppagina's linken daarheen met hun knop "Boek deze workshop". Naam, telefoon en e-mail staan dan onder de foto.
 
 {% include cta.html header="Zullen we je terugbellen?" persoon="johan" formulier=true onderwerp="Design system" %}
 
@@ -285,9 +285,17 @@ Twee velden: "E-mail of telefoon" (verplicht) en "Extra info" (optioneel). Zonde
 
 {% include sessies-etalage.html %}
 
-Een sectie met de uitgelichte workshops (`featured: true`) als beeld en een link naar alle workshops. Met `compact=true` vervallen label en kop, zoals op de home direct onder de paginatitel.
+Een sectie met de uitgelichte workshops (`featured: true`) als beeld, met daaronder een link naar alle workshops. Kop en tekst komen standaard uit `title:` en `intro:` van [/workshops/](/workshops/) (`pages/workshops.md`); pas ze per plek aan met `label`, `title` en `intro`.
 
-<pre class="ds-code container-sm"><code>{% raw %}{% include sessies-etalage.html compact=true intro="..." %}{% endraw %}</code></pre>
+<pre class="ds-code container-sm"><code>{% raw %}{% include sessies-etalage.html intro="..." %}{% endraw %}</code></pre>
+
+### Begeleiding-sectie
+
+{% include begeleiding-sectie.html %}
+
+Een sectie die naar [/begeleiding/](/begeleiding/) verwijst. Kop en tekst komen uit `teaser:` in `pages/begeleiding.md`, zodat ze op home en /workshops/ gelijk blijven. Met `vraag` zet je een vraag voor de kop. Met `kop_voor` sluit de kop aan op wat erboven staat: met `kop_voor="Of"` wordt het "Of we lopen mee tot het werkt.", zoals op /workshops/ onder de workshops. Met `tekst_voor` zet je iets voor de tekst. Met `beeld` geef je een eigen beeld mee in plaats van de foto met link.
+
+<pre class="ds-code container-sm"><code>{% raw %}{% include begeleiding-sectie.html kop_voor="Of" tekst_voor="Meer nodig dan een workshop?" %}{% endraw %}</code></pre>
 
 ### Resultaten
 
@@ -296,6 +304,14 @@ Een sectie met de uitgelichte workshops (`featured: true`) als beeld en een link
 Drie resultaten naast elkaar. Met `slugs` kies je welke, zonder `slugs` toont het blok de resultaten met `featured: true`.
 
 <pre class="ds-code container-sm"><code>{% raw %}{% include projects-homepage.html title="Resultaten van begeleiding" slugs="slug-1,slug-2,slug-3" %}{% endraw %}</code></pre>
+
+### Resultaten-sectie
+
+{% include resultaten-sectie.html %}
+
+De resultaten als brede sectie met een link naar alle resultaten, zoals op home, /begeleiding/ en de pagina's van mensen. Kop en tekst komen uit `teaser:` in `pages/projecten.md`, zodat ze overal gelijk blijven. Met `slugs` kies je de resultaten, met `kop` en `tekst` wijk je af (op een persoonspagina: "… in actie" met de voornaam, zonder tekst).
+
+<pre class="ds-code container-sm"><code>{% raw %}{% include resultaten-sectie.html slugs="slug-1,slug-2,slug-3" %}{% endraw %}</code></pre>
 
 ### Opdrachtgevers
 
@@ -327,13 +343,13 @@ Met `zonder` laat je één persoon weg, zoals op een mensenpagina, waar onderaan
 
 ### Navigatie en footer
 
-De navigatie boven en de footer onder deze pagina. Ze zitten in elke template en zet je niet zelf op een pagina.
+De navigatie boven en de footer onder deze pagina. Ze zitten in elke template en zet je niet zelf op een pagina. Vanaf 1280 pixels staat het logo onder de zwarte balk, links naast de inhoudskolom, en groeit het mee met de vrije ruimte daar (tot 180 pixels). De LinkedIn- en Mastodon-knoppen staan altijd naast de menu-items, en op mobiel in het uitklapmenu onder de menu-items (`_includes/social-links.html`).
 
 ## Templates {#templates}
 
 Het skelet van een pagina. Er zijn er twee, en ze delen dezelfde basis.
 
-- **`default`**: navigatie, de paginatitel als h1, de inhoud in de tekstkolom van 720 pixels, een contactblok onderaan en de footer. Het contactblok vervalt als de pagina er zelf al een heeft, of met `contactblok: false` in de front matter. Met `contactpersoon: joris` kies je wie erin staat. Beelden en rasters mogen breder (1024 pixels). Gebruikt door bijna alle pagina's.
+- **`default`**: navigatie, de paginatitel als h1, de inhoud in de tekstkolom van 720 pixels, een contactblok onderaan en de footer. Het contactblok vervalt als de pagina er zelf al een heeft, of met `contactblok: false` in de front matter. Met `contactpersoon: joris` kies je wie erin staat. Met `intro:` komt er een korte inleiding onder de paginatitel. Beelden en rasters mogen breder (1024 pixels). Gebruikt door bijna alle pagina's.
 - **`person`**: een mensenpagina. Bovenaan de persoon als rij met contactgegevens, dan de eigen tekst en de projecten als tekstsecties, en onderaan de collega's als rijen en het contactblok.
 - **`sessie`**: de `default`-template met een vaste volgorde van workshop-onderdelen, naar het Strategyzer-template: waardepropositie met boekknop als sectie met foto-paneel, opdrachtgevers, pijn/product/winst, dan de details: herkenning, stappen, wat je meeneemt, voor wie, praktisch, andere sessies en het contactblok. De inhoud komt uit de front matter van het sessiebestand.
 
@@ -341,8 +357,8 @@ Het skelet van een pagina. Er zijn er twee, en ze delen dezelfde basis.
 
 De templates gevuld met echte inhoud.
 
-- [Home](/): vier secties. Workshop-etalage (compact), begeleiding met foto-paneel, en opdrachtgevers en resultaten als brede secties
+- [Home](/): een inleiding onder de titel en vier secties. Workshop-etalage, begeleiding met foto-paneel, en resultaten en opdrachtgevers als brede secties
 - [Workshops](/workshops/): de workshops als blokken, begeleiding als sectie, stappen en contactblok
 - [Crazy 8's-workshop]({% include workshop-url.html naam="crazy-8s" %}): de `sessie`-template
-- [Begeleiding](/begeleiding/): quote, secties met foto-paneel, resultaten als brede sectie, de aanpak als tekstsecties en secties met foto, en het contactblok
-- [Mensen](/mensen/): twee secties met foto-paneel en quote, en de mensen als rijen in een brede sectie
+- [Begeleiding](/begeleiding/): quote, drie secties met foto-paneel, resultaten als brede sectie en het contactblok
+- [Over ons](/mensen/): een sectie met foto-paneel en quote, de mensen als rijen in een brede sectie, en hoe we werken als tekstsecties en secties met foto
